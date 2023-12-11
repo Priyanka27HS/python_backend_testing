@@ -3,11 +3,18 @@ from api_test.src.utilities.requestsUtility import RequestsUtility
 from api_test.src.dao.products_dao import ProductsDAO
 from api_test.src.helpers.products_helper import ProductsHelper
 
+# this tests should be tagged as smoke
+# we can add it as module level
+# instead of tagging each of the test cases product in smoke, we can add, we can tag the entire file with those tags
+
+pytestmark = [pytest.mark.products, pytest.mark.smoke]
 
 # for every test case you have to verify the status code
 # you have to make sure that API is responding the right status code
 # in our framework its lower level
 # here prod id is 200 - status code
+
+
 @pytest.mark.products
 @pytest.mark.tcid24
 def test_get_all_products():
