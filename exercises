@@ -1,0 +1,201 @@
+Section 12 : Exercises -> Assignment 
+
+
+1. Exercise TCID-61: Verify update 'regular_price' updates the 'price' field
+
+Automate TCID-61: Verify update 'regular_price' updates the 'price' field
+
+Test Case for Products API
+
+Make 'update product' call with data for 'regular_price'. Then verify the 'price' field of the product is updated.
+
+You can verify the 'price' field in the response of the product as well as make a second call to 'retrieve product' and verify that the 'price' field is the same as the 'regular_price' you updated it to.
+
+You can create a new product for the test or get an existing one and update it.
+
+Solution:
+
+The solution is provided in the course material. Compare your code to the given code.
+
+Run -> pytest -m tcid61
+
+
+
+2. Exercise TCID-63: Verify update 'sale_price > 0' will set field 'on_sale'=True
+
+Automate TCID-63: Verify update 'sale_price > 0' will set field 'on_sale'=True
+
+Test Case for Products API
+
+Make 'update product' call with data for 'sale_price' that is greater than 0. Example {'sale_price': '10.99'}.
+
+Then verify the 'on_sale' field of the product is updated to 'True'.
+
+You can verify the 'on_sale' field in the response of the product as well as make a second call to 'retrieve product' and verify that the 'on_sale' field is True.
+
+You can create a new product for the test or get an existing one and update it. If you are using an existing product, you have to make sure you are not getting a product that is already in 'on_sale=True' status.
+
+
+Solution:
+The solution is provided in the course material. Compare your code to the given code.
+ Run -> pytest -m tcid63
+
+
+
+3. Exercise TCID-64: Verify update 'sale_price=" "' will set field 'on_sale'=False
+
+Automate TCID-64: Verify update 'sale_price=" "' will set field 'on_sale'=False
+
+Test Case for Products API
+
+Make 'update product' call with empty string for 'sale_price' and verify the 'on_sale' field will get set to False.
+
+The product for the test must already have 'on_sale'=True.
+
+You can verify the 'on_sale' field in the response of the product as well as make a second call to 'retrieve product' and verify that the 'on_sale' field is True.
+
+You can create a new product for the test or get an existing one and update it. If you are using existing product, you have to make sure you are not getting a product that is  'on_sale=False' status.
+
+
+Solution:
+Solution is provided in the course material. Compare your code to the given code.
+
+ Run -> pytest -m tcid64
+
+
+
+4. Exercise TCID-65: Verify update 'sale_price' updates the 'sale_price' field
+
+Automate TCID-65: Verify update 'sale_price' updates the 'sale_price' field
+
+Test Case for Products API
+
+Make 'update product' call with data for 'sale_price'. Then verify the 'sale_price' field of the product is updated.
+
+You can verify the 'sale_price' field in the response of the product as well as make a second call to 'retrieve product' and verify that the 'sale_price' field is the same as the value in the payload.
+
+You can create a new product for the test or get an existing one and update it.
+
+
+Solution:
+The solution is provided in the course material. Compare your code to the given code.
+
+
+Run -> pytest -m tcid65
+
+
+
+5. Exercise TCID-60: Order with 50% off coupon should reduce total by 50%
+
+Automate TCID-60: Order with 50% off coupon should reduce the total by 50%
+
+Test Case for Orders API
+
+Create order and include a 50% off coupon. Verify the 'total' in the response. The 'total' price should be 50% of the product price.
+
+Tip:
+
+* Create/Find a coupon that is 50% off (decide to hard code it or get a new one on every run)
+* Create/Find a product and note the price
+* Create the order and verify
+
+Solution:
+
+The solution is provided in the course material. Compare your code to the given code.
+
+Run -> pytest -m tcid60
+
+
+
+6. Exercise TCID-37: Create a new coupon with 'discount_type=percent'
+
+Automate TCID-37: Verify 'POST /coupons' creates a new coupon with 'discount_type=percent'
+
+Test Case for Coupons API
+
+Make a call to 'POST coupons' to create a coupon with 'discount_type=percent' and verify the coupon is created.
+
+You can verify by getting the coupon from the database or making a 'retrieve coupon' API call.
+
+Solution:
+The solution is provided in the course material. Compare your code to the given code.
+
+Run -> pytest -m tcid37
+
+
+
+7. Exercise TCID-38: Create a new coupon with 'discount_type=fixed_cart'
+
+Automate TCID-38: Verify 'POST /coupons' creates a new coupon with 'discount_type=fixed_cart''
+
+Test Case for Coupons API
+
+Make a call to 'POST /coupons' to create a coupon with 'discount_type=fixed_cart' and verify the coupon is created.
+
+You can verify by getting the coupon from the database or making a 'retrieve coupon' API call.
+
+Tip:
+
+Use the same code as TCID-37 and parametrize the test case using
+
+@pytest.mark.parametrize(...)
+
+Solution:
+
+The solution is provided in the course material. Compare your code to the given code.
+
+Run -> pytest -m tcid38
+
+
+
+8. Exercise TCID-39: Create a new coupon with 'discount_type=fixed_product'
+
+Automate TCID-39: Verify 'POST /coupons' creates a new coupon with 'discount_type=fixed_product'
+
+Test Case for Coupons API
+
+Make a call to 'POST /coupons' to create a coupon with 'discount_type=fixed_product' and verify the coupon is created.
+
+You can verify by getting the coupon from the database or making a 'retrieve coupon' API call.
+
+Tip:
+
+Use the same code as TCID-37 and parametrize the test case using
+@pytest.mark.parametrize(...)
+
+Solution:
+
+The solution is provided in the course material. Compare your code to the given code.
+
+Run -> pytest -m tcid39
+
+
+
+9. Exercise TCID-40: Create a new coupon with 'discount_type=<invalid string>'
+
+Automate TCID-40: Verify 'POST /coupons' creates a new coupon with 'discount_type=< invalid string >'
+
+Test Case for Coupons API
+
+Make a call to 'POST /coupons' to create a coupon with 'discount_type=<some random string>' and verify the call fails.
+
+Verify correct status code is returned and the error message in the response is as expected.
+
+Solution:
+
+The solution is provided in the course material. Compare your code to the given code.
+
+Run -> pytest -m tcid40
+
+
+
+
+
+
+
+
+
+
+
+
+
