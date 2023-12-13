@@ -51,6 +51,21 @@ class WooAPIUtility(object):
 
         return self.rs_json
 
+    def put(self, wc_endpoint, params=None, expected_status_code=200):
+
+        import pdb; pdb.set_trace()
+
+        rest_api = self.wcapi.put(wc_endpoint, data=params)
+        self.status_code = rest_api.status_code
+        self.expected_status_code = expected_status_code
+        self.rs_json = rest_api.json()
+        self.endpoint = wc_endpoint
+        self.assert_status_code()
+
+        logger.debug(f"PUT API response : {rest_api.json()}")
+
+        return self.rs_json
+
 
 # when the script is executed, if the script is invoked directly, this block will be executed
 # this variable __name__, is a global variable thats going to be available is going to be set as main
@@ -59,6 +74,4 @@ if __name__ == '__main__':
     rest_api = obj.get('products')
     print(rest_api)
 
-    import pdb;
-
-    pdb.set_trace()
+    import pdb; pdb.set_trace()

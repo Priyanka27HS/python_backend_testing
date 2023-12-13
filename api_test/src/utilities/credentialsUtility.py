@@ -62,4 +62,3 @@ class CredentialsUtility(object):
             raise Exception("The DB credentials for 'DB_USER' and 'DB_PASSWORD' must be in environment variables")
         else:
             return {"DB_USER": db_user, "DB_PASSWORD": db_password}
-
