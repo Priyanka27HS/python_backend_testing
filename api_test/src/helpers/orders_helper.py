@@ -14,6 +14,7 @@ class OrdersHelper(object):
         self.curr_file_dir = os.path.dirname(os.path.realpath(__file__))
         self.woo_helper = WooAPIUtility()
 
+    # create order and arguments are optional
     def create_order(self, additional_args=None):
 
         # join will join all those strings based on the platform (Eg: Mac, Windows, Linux etc..)
@@ -27,7 +28,8 @@ class OrdersHelper(object):
         # we upload the payload and need to make the API call
         # for the API call, we are going to use the woo-commerce API which we created in utilities
         if additional_args:
-            assert isinstance(additional_args, dict), f"Parameter 'additional_args' must be a dictionary but found {type(additional_args)}"
+            assert isinstance(additional_args,
+                              dict), f"Parameter 'additional_args' must be a dictionary but found {type(additional_args)}"
             payload.update(additional_args)
 
         rest_api = self.woo_helper.post('orders', params=payload, expected_status_code=201)
@@ -37,7 +39,6 @@ class OrdersHelper(object):
     @staticmethod
     def verify_order_is_created(order_json, exp_cust_id, exp_products):
 
-
         orders_dao = OrdersDao()
 
         # verify response
@@ -46,9 +47,10 @@ class OrdersHelper(object):
         assert order_json['customer_id'] == exp_cust_id, f"Create order with given customer id returned " \
                                                          f"Bad customer ID. Expected customer_id = {exp_cust_id} but got '{order_json['customer_id']}'"
 
-        assert len(order_json['line_items']) == len(exp_products), f"Expected only {len(exp_products)} item in order but " \
-                                                   f"Found '{len(order_json['line_items'])}' " \
-                                                   f"Order id : {order_json['id']}"
+        assert len(order_json['line_items']) == len(
+            exp_products), f"Expected only {len(exp_products)} item in order but " \
+                           f"Found '{len(order_json['line_items'])}' " \
+                           f"Order id : {order_json['id']}"
 
         # verify database
         order_id = order_json['id']
@@ -65,6 +67,12 @@ class OrdersHelper(object):
         api_products_ids = [i['product_id'] for i in order_json['line_items']]
 
         for product in exp_products:
-            assert product['product_id'] in api_products_ids, f"Create order does not have at least 1 expected product in DB."\
-                                                              f"Product Id: {product['product_id']}. Order Id : {order_id}  "
+            assert product[
+                       'product_id'] in api_products_ids, f"Create order does not have at least 1 expected product in DB." \
+                                                          f"Product Id: {product['product_id']}. Order Id : {order_id}  "
 
+    def call_update_an_order(self, order_id, payload):
+        return self.woo_helper.put(f'orders/{order_id}', params=payload)
+
+    def call_retrieve_an_order(self, order_id):
+        return self.woo_helper.get(f'orders/{order_id}', )
