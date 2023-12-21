@@ -5,3 +5,9 @@ Summary: Practice API Testing
 Home-page: https://www.w3schools.com/python/
 Author: Priyanka
 Author-email: abcd1234@gmail.com
+Requires-Dist: pytest
+Requires-Dist: pytest-html
+Requires-Dist: requests
+Requires-Dist: requests-oauthlib
+Requires-Dist: PyMySQL
+Requires-Dist: WooCommerce

@@ -1,0 +1,21 @@
+-e git+ssh://git@github.com/Priyanka27HS/python_backend_testing.git@8c3a9fea3f3e1789eff4cd5d5ff5fa931072495f#egg=api_test
+certifi==2023.11.17
+charset-normalizer==3.3.2
+execnet==2.0.2
+idna==3.6
+iniconfig==2.0.0
+Jinja2==3.1.2
+MarkupSafe==2.1.3
+oauthlib==3.2.2
+pluggy==1.3.0
+py==1.11.0
+PyMySQL==1.1.0
+pytest==7.4.3
+pytest-html==4.1.1
+pytest-xdist==3.5.0
+python-dotenv==1.0.0
+requests==2.31.0
+requests-oauthlib==1.3.1
+tomli==2.0.1
+urllib3==2.1.0
+WooCommerce==3.0.0
