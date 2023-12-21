@@ -1,0 +1,6 @@
+pytest
+pytest-html
+requests
+requests-oauthlib
+PyMySQL
+WooCommerce

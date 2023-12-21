@@ -1,0 +1,11 @@
+# Created by pytest automatically.
+# Ignore Python cache files
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore pytest cache
+.pytest_cache/
+
+
