@@ -6,4 +6,14 @@ setup(name='api_test',
       author='Priyanka',
       author_email='abcd1234@gmail.com',
       url='https://www.w3schools.com/python/',
-      packages=find_packages())
+      packages=find_packages(),
+      zip_safe=False,
+      install_requires=[
+          "pytest",
+          "pytest-html",
+          "requests",
+          "requests-oauthlib",
+          "PyMySQL",
+          "WooCommerce",
+      ]
+)
